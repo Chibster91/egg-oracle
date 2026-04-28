@@ -459,7 +459,7 @@ function CalendarCell({ date, monthDate, data, onOpenDay }) {
     <button
       type="button"
       onClick={() => onOpenDay(toISO(date))}
-      className={`relative min-h-[76px] cursor-pointer border border-slate-100 p-1 text-left ${bg} ${currentMonth ? "text-slate-700" : "text-slate-300"}`}
+      className={`relative min-h-[66px] cursor-pointer border border-slate-100 p-1 text-left sm:min-h-[76px] ${bg} ${currentMonth ? "text-slate-700" : "text-slate-300"}`}
       aria-label={`Open log for ${toISO(date)}`}
     >
       <span className="block text-center text-sm font-bold">{date.getDate()}</span>
@@ -523,8 +523,8 @@ function DayModal({ iso, data, setData, onClose }) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-slate-950/35 p-0 sm:items-center sm:p-4">
-      <div className="max-h-[92vh] w-full max-w-md overflow-auto rounded-t-3xl bg-white p-5 shadow-2xl sm:rounded-3xl">
+    <div className="fixed inset-0 z-50 flex items-end justify-center bg-slate-950/35 p-0 pb-[env(safe-area-inset-bottom)] sm:items-center sm:p-4">
+      <div className="max-h-[calc(100dvh-1rem)] w-full max-w-md overflow-auto rounded-t-3xl bg-white p-5 shadow-2xl sm:rounded-3xl">
         <div className="mb-4 flex items-start justify-between gap-3">
           <div>
             <h2 className="text-2xl font-bold text-slate-900">{date.toLocaleDateString(undefined, { weekday: "long", month: "short", day: "numeric" })}</h2>
@@ -621,7 +621,7 @@ function StatsPage({ data, setData }) {
   ];
 
   return (
-    <main className="space-y-4 p-4 pb-24">
+    <main className="space-y-4 p-4 pb-[calc(6rem+env(safe-area-inset-bottom))]">
       <section className="rounded-3xl bg-gradient-to-br from-cyan-800 to-cyan-600 p-5 text-white shadow-lg">
         <h2 className="text-2xl font-bold">Current estimates</h2>
         <p className="mt-2 text-cyan-50">Next period: <b>{formatDateLong(cycle.nextStart)}</b></p>
@@ -738,7 +738,7 @@ function SettingsPage({ data, setData }) {
   }
 
   return (
-    <main className="space-y-4 p-4 pb-24">
+    <main className="space-y-4 p-4 pb-[calc(6rem+env(safe-area-inset-bottom))]">
       <section className="rounded-3xl bg-white p-4 shadow-sm">
         <h2 className="text-2xl font-bold text-slate-900">Settings</h2>
         <p className="mt-1 text-sm text-slate-500">Backup, restore, or purge the tiny egg ledger. Data stays in this browser unless you export it.</p>
@@ -812,7 +812,7 @@ function CalendarPage({ data, monthDate, setMonthDate, onOpenDay }) {
   const cycle = findCycleForDate(data, new Date());
 
   return (
-    <main className="p-4 pb-24">
+    <main className="p-4 pb-[calc(6rem+env(safe-area-inset-bottom))]">
       <section className="mb-4 rounded-3xl bg-white p-4 shadow-sm">
         <div className="flex items-center justify-between">
           <button type="button" onClick={() => setMonthDate((m) => new Date(m.getFullYear(), m.getMonth() - 1, 1))} className="cursor-pointer rounded-full bg-slate-100 p-2" aria-label="Previous month"><Icon name="left" size={34} /></button>
@@ -858,9 +858,9 @@ export default function EggOracleTrackingFirst() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-800">
-      <div className="mx-auto min-h-screen max-w-md bg-slate-50 shadow-2xl">
-        <header className="bg-cyan-800 px-5 pb-5 pt-8 text-white">
+    <div className="min-h-dvh bg-slate-100 text-slate-800">
+      <div className="mx-auto min-h-dvh w-full max-w-md bg-slate-50 shadow-2xl">
+        <header className="bg-cyan-800 px-5 pb-5 pt-[calc(2rem+env(safe-area-inset-top))] text-white">
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold">Egg Oracle</h1>
@@ -874,7 +874,7 @@ export default function EggOracleTrackingFirst() {
         {activeTab === "stats" && <StatsPage data={data} setData={setData} />}
         {activeTab === "settings" && <SettingsPage data={data} setData={setData} />}
 
-        <nav className="fixed bottom-0 left-1/2 grid w-full max-w-md -translate-x-1/2 grid-cols-3 border-t border-slate-200 bg-white p-2 shadow-[0_-6px_20px_rgba(15,23,42,.08)]">
+        <nav className="fixed bottom-0 left-1/2 grid w-full max-w-md -translate-x-1/2 grid-cols-3 border-t border-slate-200 bg-white px-2 pt-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] shadow-[0_-6px_20px_rgba(15,23,42,.08)]">
           <button
             type="button"
             onClick={() => setActiveTab("calendar")}
