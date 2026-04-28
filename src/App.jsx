@@ -812,33 +812,33 @@ function CalendarPage({ data, monthDate, setMonthDate, onOpenDay }) {
   const cycle = findCycleForDate(data, new Date());
 
   return (
-    <main className="p-4 pb-[calc(6rem+env(safe-area-inset-bottom))]">
-      <section className="mb-4 rounded-3xl bg-white p-4 shadow-sm">
+    <main className="px-3 pt-2 pb-[calc(6rem+env(safe-area-inset-bottom))]">
+      <section className="mb-2 rounded-3xl bg-white p-2 shadow-sm">
         <div className="flex items-center justify-between">
           <button type="button" onClick={() => setMonthDate((m) => new Date(m.getFullYear(), m.getMonth() - 1, 1))} className="cursor-pointer rounded-full bg-slate-100 p-2" aria-label="Previous month"><Icon name="left" size={34} /></button>
           <h2 className="text-xl font-bold text-slate-900">{monthTitle(monthDate)}</h2>
           <button type="button" onClick={() => setMonthDate((m) => new Date(m.getFullYear(), m.getMonth() + 1, 1))} className="cursor-pointer rounded-full bg-slate-100 p-2" aria-label="Next month"><Icon name="right" size={34} /></button>
         </div>
-        <div className="mt-3 rounded-2xl bg-cyan-50 p-3 text-sm text-cyan-900">
+        <div className="mt-1 rounded-2xl bg-cyan-50 p-2 text-sm text-cyan-900">
           Fertile window estimate: <b>{formatDateLong(cycle.fertileStart)} to {formatDateLong(cycle.fertileEnd)}</b>{cycle.fertileStartSource === "mucus" ? " (extended by fertile mucus)" : ""}. Ovulation estimate: <b>{formatDateLong(cycle.ovulationDate)}</b> {cycle.ovulationSource !== "calendar" ? `(adjusted from LH)` : ""}.
         </div>
       </section>
 
       <section className="overflow-hidden rounded-3xl bg-white shadow-sm">
         <div className="grid grid-cols-7 bg-slate-50 text-center text-xs font-bold text-slate-500">
-          {["S", "M", "T", "W", "T", "F", "S"].map((d, i) => <div key={`${d}-${i}`} className="py-3">{d}</div>)}
+          {["S", "M", "T", "W", "T", "F", "S"].map((d, i) => <div key={`${d}-${i}`} className="py-1">{d}</div>)}
         </div>
         <div className="grid grid-cols-7">
           {days.map((date) => <CalendarCell key={toISO(date)} date={date} monthDate={monthDate} data={data} onOpenDay={onOpenDay} />)}
         </div>
       </section>
 
-      <section className="mt-4 grid grid-cols-2 gap-2 text-sm text-slate-600">
-        <div className="rounded-2xl bg-rose-100 p-3"><Icon name="droplet" size={15} className="mr-1 text-rose-500" /> Period</div>
-        <div className="rounded-2xl bg-yellow-100 p-3"><Icon name="sparkles" size={15} className="mr-1 text-yellow-500" /> Fertile</div>
-        <div className="rounded-2xl bg-cyan-50 p-3"><span className="mr-2 inline-block h-3 w-3 rounded-full bg-cyan-600" /> Ovulation</div>
-        <div className="rounded-2xl bg-white p-3 shadow-sm"><Icon name="heart" size={15} className="mr-1 text-red-500" /> Intercourse</div>
-        <div className="rounded-2xl bg-purple-50 p-3"><span className="mr-1 rounded bg-purple-600 px-1 text-[10px] font-bold text-white">LH</span> Positive OPK</div>
+      <section className="mt-2 grid grid-cols-2 gap-2 text-sm text-slate-600">
+        <div className="rounded-2xl bg-rose-100 p-2"><Icon name="droplet" size={15} className="mr-1 text-rose-500" /> Period</div>
+        <div className="rounded-2xl bg-yellow-100 p-2"><Icon name="sparkles" size={15} className="mr-1 text-yellow-500" /> Fertile</div>
+        <div className="rounded-2xl bg-cyan-50 p-2"><span className="mr-2 inline-block h-3 w-3 rounded-full bg-cyan-600" /> Ovulation</div>
+        <div className="rounded-2xl bg-white p-2 shadow-sm"><Icon name="heart" size={15} className="mr-1 text-red-500" /> Intercourse</div>
+        <div className="rounded-2xl bg-purple-50 p-2"><span className="mr-1 rounded bg-purple-600 px-1 text-[10px] font-bold text-white">LH</span> Positive OPK</div>
       </section>
     </main>
   );
@@ -860,7 +860,7 @@ export default function EggOracleTrackingFirst() {
   return (
     <div className="min-h-dvh bg-slate-100 text-slate-800">
       <div className="mx-auto min-h-dvh w-full max-w-md bg-slate-50 shadow-2xl">
-        <header className="bg-cyan-800 px-5 pb-5 pt-[calc(2rem+env(safe-area-inset-top))] text-white">
+        <header className="bg-cyan-800 px-4 pb-2 pt-[calc(0.75rem+env(safe-area-inset-top))] text-white">
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold">Egg Oracle</h1>
